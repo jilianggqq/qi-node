@@ -6,3 +6,10 @@ docker run -p 3000[local_port]:3000[container_port]sha256:db2b024b5724c50b7d7a95
 docker ps 
 docker stop [container_name]
 ```
+
+__start docker container with interactive way__
+
+```
+docker start <container_name_or_id>
+docker logs -f <container_name_or_id>
+```
