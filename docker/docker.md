@@ -37,4 +37,19 @@ docker run -p 8081:8080 -d --rm --name qifeedback feedback
 docker run -p 8081:8080 -d --rm -v feedback:/app/feedback --name qifeedback1 feedback
 docker run -p 8081:8080 -d -v feedback:/app/feedback -v $(pwd):/app --name qifeedback2 feedback
 docker run -p 8081:8080 -d -v feedback:/app/feedback -v $(pwd):/app --name qifeedback3 feedback-anonym
+docker run -p 8081:8080 -d --rm -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/temp --name qifeedback3 feedback-anonym
+<!-- Env args -->
+docker run -p 8081:8888 -d --rm -e PORT=8888 -v feedback:/app/feedback -v "$(pwd):/app:ro" -v /app/temp --name qifeedback5 feedback-anonym:port
+```
+
+### Network
+- for mongodb
+```
+dk network create qi-network
+dk run -d --network qi-network --name mongodb mongo
+```
+- for app
+```
+docker build -t imgnetwork .
+dk run -d --network qi-network -p 3000:3000 --name ctnetwork imgnetwork
 ```
