@@ -1,5 +1,7 @@
 from random import randint
 
+print("qi python test v2.0.")
+
 min_number = int(input('Please enter the min number: '))
 max_number = int(input('Please enter the max number: '))
 

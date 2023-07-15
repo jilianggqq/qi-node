@@ -21,9 +21,20 @@ docker attach
 ```
 
 ```
+docker build --tag qiqiangguan/qi-python-test1:1.0 .
 docker run -p 8081:8080 -d --rm --name qinode-test1 qinode:0.1
+docker run -it --rm qiqiangguan/qi-python-test1:1.0
 ```
 -d: deatach mode (attach mode: -a)
 --rm: container will be removed automatically when it's stopped.
 qinode: image name
 0.1: image tag
+
+### Volumes & Bind Mount
+```
+dk build -t feedback-anonym .
+docker run -p 8081:8080 -d --rm --name qifeedback feedback
+docker run -p 8081:8080 -d --rm -v feedback:/app/feedback --name qifeedback1 feedback
+docker run -p 8081:8080 -d -v feedback:/app/feedback -v $(pwd):/app --name qifeedback2 feedback
+docker run -p 8081:8080 -d -v feedback:/app/feedback -v $(pwd):/app --name qifeedback3 feedback-anonym
+```
