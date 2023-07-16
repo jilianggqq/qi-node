@@ -53,3 +53,20 @@ dk run -d --network qi-network --name mongodb mongo
 docker build -t imgnetwork .
 dk run -d --network qi-network -p 3000:3000 --name ctnetwork imgnetwork
 ```
+
+### Integration (multi-02-finished)
+```
+dk network create goals-network
+docker run -d --network goals-network --name goalsmongodb -v data:/data/db -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+<!-- backend -->
+docker build -t goals-node .
+docker run -d --rm --network goals-network -p 80:80 --name goals-backend -v /Users/qiqiangguan/projects/qi-node/docker/multi-02-finished/backend:/app -v /app/node_modules -v /tmp/logs:/app/logs -e MONGODB_USERNAME=root -e MONGODB_PASSWORD=secret goals-node
+
+<!-- error -->
+docker run --rm --network goals-network -p 80:80 --name goals-backend -v /Users/qiqiangguan/projects/qi-node/docker/multi-02-finished/backend:/app -v /app/node_modules -v /tmp/logs:/app/logs -e MONGODB_USERNAME=root -e MONGODB_PASSWORD=secret1 goals-node
+
+docker build -t goals-react .
+ docker run -d --rm -p 3000:3000 --name goals-front -it -v /Users/qiqiangguan/projects/qi-node/docker/multi-02-finished/frontend/src:/app/src goals-react
+
+```
