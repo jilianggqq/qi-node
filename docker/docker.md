@@ -80,3 +80,19 @@ use course-goals;
 show collections
 db.goals.find()
 ```
+
+### Utility Containers
+```
+dk run -it -v /Users/qiqiangguan/projects/qi-node/docker/utility-container:/app utimg npm init
+dk run -it -d -v /Users/qiqiangguan/projects/qi-node/docker/utility-container:/app utimg
+dk run -it -v /Users/qiqiangguan/projects/qi-node/docker/utility-container:/app utimg npm install express --save
+
+OR:
+dk run -it -d -v /Users/qiqiangguan/projects/qi-node/docker/utility-container:/app utimg2
+dk exec -it quirky_elion npm init
+dk exec -it quirky_elion npm install express --save
+
+<!-- with endpoint -->
+dk run -it -v /Users/qiqiangguan/projects/qi-node/docker/utility-container:/app utimg install express --save
+dk run -it -v /Users/qiqiangguan/projects/qi-node/docker/utility-container:/app utimg init
+```
