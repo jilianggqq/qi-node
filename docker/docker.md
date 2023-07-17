@@ -70,3 +70,13 @@ docker build -t goals-react .
  docker run -d --rm -p 3000:3000 --name goals-front -it -v /Users/qiqiangguan/projects/qi-node/docker/multi-02-finished/frontend/src:/app/src goals-react
 
 ```
+
+### Operations of MongoDB in local
+```
+docker exec -it multi-02-finished-goalsmongodb-1 mongosh -u "root" -p "secret"
+
+show databases;
+use course-goals;
+show collections
+db.goals.find()
+```
