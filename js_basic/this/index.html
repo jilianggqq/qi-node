@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Change Text Example</title>
+    <script>
+        // 'use strict'
+        document.addEventListener('DOMContentLoaded', function () {
+            // This function is executed once the DOM is fully loaded
+            document.getElementById('changeTextButton').addEventListener('click', function () {
+                document.getElementById('textInput').value = 'Welcome';
+            });
+        });
+
+        // 6. Default Binding.
+        age = 22;
+        function verifyAge() {
+            return this.age;
+        }
+        // should be 22, not working.
+        console.log(verifyAge());
+    </script>
+</head>
+
+<body>
+    <div>
+        <button id="changeTextButton">Click Me!</button>
+        <input type="text" id="textInput" value="Original Text" />
+    </div>
+</body>
+
+</html>
